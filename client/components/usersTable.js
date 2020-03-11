@@ -5,7 +5,9 @@ import { bindActionCreators } from 'redux'
 import UsersTableControls from './usersTable_controls'
 import UsersTableRow from './usersTable_row'
 
-const tableHeaders = ['First Name', 'Last Name', 'Last Name', 'Created at', 'Created at']
+import USERS from './staticUsers'
+
+const tableHeaders = ['Photo', 'First Name', 'Last Name', 'Email', 'Phone']
 
 const UsersTable = () => {
   return (
@@ -28,7 +30,9 @@ const UsersTable = () => {
                 </tr>
               </thead>
               <tbody>
-                <UsersTableRow />
+                {USERS.results.map((user) => (
+                  <UsersTableRow user={user} />
+                ))}
               </tbody>
             </table>
             <div className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">

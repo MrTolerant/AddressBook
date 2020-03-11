@@ -7,7 +7,7 @@ import UsersTable from './usersTable'
 
 const Index = () => {
   return (
-    <div className="flex justify-center content-center h-screen w-screen bg-gray-200">
+    <div className="flex justify-center content-center min-h-screen min-w-screen bg-gray-200">
       <UsersTable />
     </div>
   )
