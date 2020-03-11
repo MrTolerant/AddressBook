@@ -3,12 +3,12 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
+import UsersTable from './usersTable'
+
 const Index = () => {
   return (
-    <div className="flex justify-center content-center h-full bg-gray-800">
-      <div className=" m-auto">
-        <p className="subpixel-antialiased text-4xl text-white">...</p>
-      </div>
+    <div className="flex justify-center content-center h-screen w-screen bg-gray-200">
+      <UsersTable />
     </div>
   )
 }

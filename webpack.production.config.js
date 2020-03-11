@@ -205,7 +205,6 @@ const config = {
 
     new CopyWebpackPlugin([{ from: 'assets/images', to: 'images' }]),
     new CopyWebpackPlugin([{ from: 'assets/fonts', to: 'fonts' }]),
-    new CopyWebpackPlugin([{ from: 'assets/js', to: 'js' }]),
     new CopyWebpackPlugin([{ from: 'assets/manifest.json', to: 'manifest.json' }]),
     new CopyWebpackPlugin([{ from: 'assets/robots.txt', to: 'robots.txt' }]),
 
