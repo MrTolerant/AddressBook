@@ -25,7 +25,7 @@ const OnlyAnonymousRoute = ({ component: Component, ...rest }) => {
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const func = (props) =>
-    rest.email && rest.token && rest.refreshToken ? (
+    !rest.email && !rest.token && !rest.refreshToken ? (
       <Component {...props} />
     ) : (
       <Redirect
