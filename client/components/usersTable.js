@@ -11,35 +11,57 @@ import { getUsers } from '../redux/reducers/users'
 
 const tableHeaders = ['Photo', 'First Name', 'Last Name', 'Email', 'Phone']
 
-const UsersTable = ({ getUsers: getUsersRedux, UsersData = { results: [] } }) => {
+const UsersTable = ({ getUsers: getUsersRedux, Data = { results: [] } }) => {
   const [page, setPage] = useState(1)
   const [results, setResults] = useState(5)
+  const [filter, setFilter] = useState('')
+  const [usersData, setUsersData] = useState(Data)
 
   useEffect(() => {
     getUsersRedux({ page, results })
   }, [getUsersRedux, page, results])
+
+  useEffect(() => {
+    setUsersData(Data)
+  }, [Data])
+
+  const useFilter = (item) => {
+    return (
+      item.name.first.includes(filter) ||
+      item.name.last.includes(filter) ||
+      item.login.username.includes(filter) ||
+      item.registered.date.includes(filter) ||
+      item.email.includes(filter) ||
+      item.phone.includes(filter) ||
+      item.location.country.includes(filter) ||
+      item.location.city.includes(filter)
+    )
+  }
   return (
     <div className="container mx-auto px-4 sm:px-8">
       <div className="py-8">
         <div>
           <h2 className="text-2xl text-gray-800 font-semibold leading-tight">Users</h2>
         </div>
-        <UsersTableResultsSearch setPage={setPage} setResults={setResults} />
+        <UsersTableResultsSearch setPage={setPage} setResults={setResults} setFilter={setFilter} />
         <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
           <div className="inline-block min-w-full shadow-lg rounded-lg overflow-hidden">
             <table className="min-w-full leading-normal">
               <thead>
                 <tr>
                   {tableHeaders.map((h) => (
-                    <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                    <th
+                      key={`${h}`}
+                      className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
+                    >
                       {h}
                     </th>
                   ))}
                 </tr>
               </thead>
               <tbody>
-                {UsersData.results.map((user) => (
-                  <UsersTableRow user={user} />
+                {usersData.results.filter(useFilter).map((user) => (
+                  <UsersTableRow key={`${user.phone}`} user={user} />
                 ))}
               </tbody>
             </table>
@@ -54,7 +76,7 @@ const UsersTable = ({ getUsers: getUsersRedux, UsersData = { results: [] } }) =>
 UsersTable.propTypes = {}
 
 const mapStateToProps = (store) => ({
-  UsersData: store.users.data
+  Data: store.users.data
 })
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ getUsers }, dispatch)

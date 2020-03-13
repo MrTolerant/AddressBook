@@ -15,14 +15,14 @@ const UsersTableResultsSearch = ({ setPage, page }) => {
         <button
           type="button"
           onClick={() => setPage(Math.max(page - 1, 1))}
-          className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-l"
+          className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-l focus:outline-none"
         >
           Prev
         </button>
         <button
           type="button"
           onClick={() => setPage(Math.min(page + 1, MAX_PAGES))}
-          className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-r"
+          className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-r focus:outline-none"
         >
           Next
         </button>

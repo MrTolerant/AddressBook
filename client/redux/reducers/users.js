@@ -10,7 +10,6 @@ const initialState = {}
 export default (state = initialState, action) => {
   switch (action.type) {
     case GET_USERS: {
-      console.log('action.GET_USERS', action.data)
       return {
         ...state,
         data: action.data
@@ -48,10 +47,8 @@ export function getUsers({ page, results }) {
       .then((res) => res.json())
       .then((json) => {
         if (json.error) {
-          console.log('throw json.error', json.error)
           throw json.error
         }
-        console.log('json', json)
         dispatch({
           type: GET_USERS,
           data: json
