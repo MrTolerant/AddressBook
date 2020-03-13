@@ -9,7 +9,7 @@ import UsersTableRow from './usersTable_row'
 
 import { getUsers } from '../redux/reducers/users'
 
-const tableHeaders = ['Photo', 'First Name', 'Last Name', 'Email', 'Phone']
+const tableHeaders = ['Photo', 'First Name', 'Last Name', 'Phone']
 
 const UsersTable = ({ getUsers: getUsersRedux, Data = { results: [] } }) => {
   const [page, setPage] = useState(1)
@@ -29,12 +29,8 @@ const UsersTable = ({ getUsers: getUsersRedux, Data = { results: [] } }) => {
     return (
       item.name.first.includes(filter) ||
       item.name.last.includes(filter) ||
-      item.login.username.includes(filter) ||
-      item.registered.date.includes(filter) ||
-      item.email.includes(filter) ||
-      item.phone.includes(filter) ||
-      item.location.country.includes(filter) ||
-      item.location.city.includes(filter)
+      // item.email.includes(filter) ||
+      item.phone.includes(filter)
     )
   }
   return (

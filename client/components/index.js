@@ -7,8 +7,13 @@ import UsersTable from './usersTable'
 
 const Index = () => {
   return (
-    <div className="flex justify-center content-center min-h-screen min-w-screen bg-gray-200">
-      <UsersTable />
+    <div className="flex flex-row justify-center content-center min-h-screen min-w-screen bg-gray-200">
+      <div className="flex-flex-col">
+        <UsersTable />
+      </div>
+      <div className="flex-flex-col">
+        <UsersTable />
+      </div>
     </div>
   )
 }
