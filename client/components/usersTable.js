@@ -27,10 +27,10 @@ const UsersTable = ({ getUsers: getUsersRedux, Data = { results: [] } }) => {
 
   const useFilter = (item) => {
     return (
-      item.name.first.includes(filter) ||
-      item.name.last.includes(filter) ||
-      // item.email.includes(filter) ||
-      item.phone.includes(filter)
+      item.name.first.toLowerCase().includes(filter.toLowerCase()) ||
+      item.name.last.toLowerCase().includes(filter.toLowerCase()) ||
+      // item.email.toLowerCase().includes(filter.toLowerCase()) ||
+      item.phone.toLowerCase().includes(filter.toLowerCase())
     )
   }
   return (
