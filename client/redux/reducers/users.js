@@ -5,9 +5,6 @@ const ERROR_HAPPENED = 'AddressBook/ERROR_HAPPENED'
 const REQUEST_STARTED = 'AddressBook/REQUEST_STARTED'
 const REQUEST_DONE = 'AddressBook/REQUEST_DONE'
 
-const API_SERVER = ''
-const ORG_URL = `http://${API_SERVER}/api/org`
-
 const initialState = {}
 
 export default (state = initialState, action) => {
@@ -41,54 +38,32 @@ export default (state = initialState, action) => {
   }
 }
 
-export function getOrg() {
-  return (dispatch, getState) => {
-    const { token, isRequestingRenewToken } = getState().apiAuth
-    if (!isRequestingRenewToken) {
-      dispatch({ type: REQUEST_STARTED })
-      fetch(ORG_URL, {
-        method: 'GET', // *GET, POST, PUT, DELETE
-        headers: {
-          Authorization: `Bearer ${token}`
+export function getUsers({ page, results }) {
+  const USERS_URL = `https://randomuser.me/api/?page=${page}&results=${results}&seed=abc`
+  return (dispatch) => {
+    dispatch({ type: REQUEST_STARTED })
+    fetch(USERS_URL, {
+      method: 'GET' // *GET, POST, PUT, DELETE
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        if (json.error) {
+          console.log('throw json.error', json.error)
+          throw json.error
         }
+        console.log('json', json)
+        dispatch({
+          type: GET_USERS,
+          data: json
+        })
+        dispatch({ type: REQUEST_DONE })
       })
-        .then((res) => {
-          if (res.status === 403) {
-            if (!isRequestingRenewToken) {
-              const { token: newtoken } = getState().apiAuth
-              fetch(ORG_URL, {
-                method: 'GET', // *GET, POST, PUT, DELETE
-                headers: {
-                  Authorization: `Bearer ${newtoken}`
-                }
-              }).then((newres) => {
-                return newres.json()
-              })
-            }
-          }
-          console.log('GET org status', res.status)
-          return res.json()
+      .catch((error) => {
+        console.error('ORG catch error', error)
+        dispatch({
+          type: ERROR_HAPPENED,
+          data: error
         })
-        .then((json) => {
-          if (json.error) {
-            console.log('throw json.error', json.error)
-            throw json.error
-          }
-          console.log('json', json)
-          dispatch({
-            type: GET_USERS,
-            data: json,
-            TotalPages: json.TotalPages
-          })
-          dispatch({ type: REQUEST_DONE })
-        })
-        .catch((error) => {
-          console.error('ORG catch error', error)
-          dispatch({
-            type: ERROR_HAPPENED,
-            data: error
-          })
-        })
-    }
+      })
   }
 }
