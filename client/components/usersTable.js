@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { memo, useState, useEffect } from 'react'
 
 import { connect } from 'react-redux'
@@ -28,6 +29,7 @@ const UsersTable = ({
 
   useEffect(() => {
     setUsersData(Data)
+    console.log(JSON.stringify(Data, null, 2))
   }, [Data])
 
   const useFilter = (item) => {
