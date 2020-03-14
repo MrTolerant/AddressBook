@@ -7,16 +7,14 @@ import UsersTable from './usersTable'
 import UserView from './userView'
 
 const Index = () => {
-  const [currentUser, setCurrentUser] = useState({})
+  const [currentUser, setCurrentUser] = useState(false)
 
   return (
     <div className="flex-row grid grid-cols-2 gap-4  min-h-screen min-w-screen bg-gray-200">
       <div className="flex-flex-col">
         <UsersTable setCurrentUser={setCurrentUser} currentUser={currentUser} />
       </div>
-      <div className="flex-flex-col">
-        <UserView currentUser={currentUser} />
-      </div>
+      <div className="flex-flex-col">{currentUser && <UserView currentUser={currentUser} />}</div>
     </div>
   )
 }

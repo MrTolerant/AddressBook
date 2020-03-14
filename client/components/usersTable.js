@@ -41,11 +41,6 @@ const UsersTable = ({
   return (
     <div className="container">
       <div className="py-8">
-        {/* <div>
-          <h2 className="text-2xl text-center text-gray-800 font-semibold leading-tight shadow-2xl">
-            Users
-          </h2>
-        </div> */}
         <UsersTableResultsSearch setPage={setPage} setResults={setResults} setFilter={setFilter} />
         <div className="flex justify-end -mx-4 sm:-mx-8 pl-auto sm:px-8 py-4 overflow-x-auto">
           <div className="inline-block min-w-64 shadow-lg rounded-lg overflow-hidden">

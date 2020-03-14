@@ -9,7 +9,7 @@ const UsersTableRow = ({ user, setCurrentUser, currentUser }) => {
       className={`pl-4 cursor-pointer transition duration-500 ease-in-out bg-white transform hover:-translate-y-1 hover:scale-110 ${
         user === currentUser ? 'bg-blue-200 hover:bg-red-200 ' : 'hover:bg-blue-200 '
       }`}
-      onClick={() => setCurrentUser(user === currentUser ? {} : user)}
+      onClick={() => setCurrentUser(user === currentUser ? false : user)}
     >
       <td className="px-5 py-1 border-b border-gray-200 text-sm">
         <div className="flex items-center">
