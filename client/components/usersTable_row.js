@@ -14,15 +14,19 @@ const UsersTableRow = ({ user, setCurrentUser, currentUser }) => {
       <td className="px-5 py-1 border-b border-gray-200 text-sm">
         <div className="flex items-center">
           <div className="flex-shrink-0 w-10 h-10">
-            <img className="w-full h-full rounded-full" src={user.picture.thumbnail} alt="" />
+            <img
+              className="w-full h-full rounded-full select-none"
+              src={user.picture.thumbnail}
+              alt=""
+            />
           </div>
         </div>
       </td>
       <td className="px-5 py-1 border-b border-gray-200 text-sm">
-        <p className="text-gray-900 whitespace-no-wrap">{user.name.first} </p>
+        <p className="text-gray-900 whitespace-no-wrap select-none">{user.name.first} </p>
       </td>
       <td className="px-5 py-1 border-b border-gray-200 text-sm">
-        <p className="text-gray-900 whitespace-no-wrap">{user.name.last}</p>
+        <p className="text-gray-900 whitespace-no-wrap select-none">{user.name.last}</p>
       </td>
       {/* <td className="px-5 py-1 border-b border-gray-200 text-sm">
         <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
@@ -31,7 +35,7 @@ const UsersTableRow = ({ user, setCurrentUser, currentUser }) => {
         </span>
       </td> */}
       <td className="px-5 py-1 border-b border-gray-200 text-sm">
-        <p className="text-gray-900 whitespace-no-wrap">{user.phone}</p>
+        <p className="text-gray-900 whitespace-no-wrap select-none">{user.phone}</p>
       </td>
     </tr>
   )
