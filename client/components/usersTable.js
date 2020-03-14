@@ -11,7 +11,7 @@ import { getUsers } from '../redux/reducers/users'
 
 const tableHeaders = ['Photo', 'First Name', 'Last Name', 'Phone']
 
-const UsersTable = ({ getUsers: getUsersRedux, Data = { results: [] } }) => {
+const UsersTable = ({ setCurrentUser, getUsers: getUsersRedux, Data = { results: [] } }) => {
   const [page, setPage] = useState(1)
   const [results, setResults] = useState(5)
   const [filter, setFilter] = useState('')
@@ -57,7 +57,11 @@ const UsersTable = ({ getUsers: getUsersRedux, Data = { results: [] } }) => {
               </thead>
               <tbody>
                 {usersData.results.filter(useFilter).map((user) => (
-                  <UsersTableRow key={`${user.phone}`} user={user} />
+                  <UsersTableRow
+                    key={`${user.phone}`}
+                    user={user}
+                    setCurrentUser={setCurrentUser}
+                  />
                 ))}
               </tbody>
             </table>

@@ -3,9 +3,9 @@ import React, { memo } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-const UsersTableRow = ({ user }) => {
+const UsersTableRow = ({ user, setCurrentUser }) => {
   return (
-    <tr>
+    <tr onClick={() => setCurrentUser(user)}>
       <td className="px-5 py-1 border-b border-gray-200 bg-white text-sm">
         <div className="flex items-center">
           <div className="flex-shrink-0 w-10 h-10">
