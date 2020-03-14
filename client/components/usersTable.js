@@ -11,7 +11,12 @@ import { getUsers } from '../redux/reducers/users'
 
 const tableHeaders = ['Photo', 'First Name', 'Last Name', 'Phone']
 
-const UsersTable = ({ setCurrentUser, getUsers: getUsersRedux, Data = { results: [] } }) => {
+const UsersTable = ({
+  currentUser,
+  setCurrentUser,
+  getUsers: getUsersRedux,
+  Data = { results: [] }
+}) => {
   const [page, setPage] = useState(1)
   const [results, setResults] = useState(5)
   const [filter, setFilter] = useState('')
@@ -61,6 +66,7 @@ const UsersTable = ({ setCurrentUser, getUsers: getUsersRedux, Data = { results:
                     key={`${user.phone}`}
                     user={user}
                     setCurrentUser={setCurrentUser}
+                    currentUser={currentUser}
                   />
                 ))}
               </tbody>

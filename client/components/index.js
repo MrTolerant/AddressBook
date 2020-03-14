@@ -12,7 +12,7 @@ const Index = () => {
   return (
     <div className="flex flex-row justify-center content-center min-h-screen min-w-screen bg-gray-200">
       <div className="flex-flex-col">
-        <UsersTable setCurrentUser={setCurrentUser} />
+        <UsersTable setCurrentUser={setCurrentUser} currentUser={currentUser} />
       </div>
       <div className="flex-flex-col">
         <UserView currentUser={currentUser} />
