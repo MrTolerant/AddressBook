@@ -10,7 +10,7 @@ const Index = () => {
   const [currentUser, setCurrentUser] = useState({})
 
   return (
-    <div className="flex flex-row justify-center content-center min-h-screen min-w-screen bg-gray-200">
+    <div className="flex-row grid grid-cols-2 gap-4  min-h-screen min-w-screen bg-gray-200">
       <div className="flex-flex-col">
         <UsersTable setCurrentUser={setCurrentUser} currentUser={currentUser} />
       </div>

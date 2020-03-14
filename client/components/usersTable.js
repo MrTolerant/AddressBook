@@ -39,15 +39,17 @@ const UsersTable = ({
     )
   }
   return (
-    <div className="container mx-auto px-4 sm:px-8">
+    <div className="container">
       <div className="py-8">
-        <div>
-          <h2 className="text-2xl text-gray-800 font-semibold leading-tight">Users</h2>
-        </div>
+        {/* <div>
+          <h2 className="text-2xl text-center text-gray-800 font-semibold leading-tight shadow-2xl">
+            Users
+          </h2>
+        </div> */}
         <UsersTableResultsSearch setPage={setPage} setResults={setResults} setFilter={setFilter} />
-        <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-          <div className="inline-block min-w-full shadow-lg rounded-lg overflow-hidden">
-            <table className="min-w-full leading-normal">
+        <div className="flex justify-end -mx-4 sm:-mx-8 pl-auto sm:px-8 py-4 overflow-x-auto">
+          <div className="inline-block min-w-64 shadow-lg rounded-lg overflow-hidden">
+            <table className="min-w-64 leading-normal">
               <thead>
                 <tr>
                   {tableHeaders.map((h) => (

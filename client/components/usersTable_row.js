@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux'
 const UsersTableRow = ({ user, setCurrentUser, currentUser }) => {
   return (
     <tr
-      className={`cursor-pointer transition duration-500 ease-in-out bg-white transform hover:-translate-y-1 hover:scale-110 ${
+      className={`pl-4 cursor-pointer transition duration-500 ease-in-out bg-white transform hover:-translate-y-1 hover:scale-110 ${
         user === currentUser ? 'bg-blue-200 hover:bg-red-200 ' : 'hover:bg-blue-200 '
       }`}
       onClick={() => setCurrentUser(user === currentUser ? {} : user)}
