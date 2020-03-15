@@ -22,7 +22,7 @@ const UsersTableResultsSearch = ({ setPage, page }) => {
         <button
           type="button"
           onClick={() => setPage(Math.min(page + 1, MAX_PAGES))}
-          className="transition duration-500 ease-in-out text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-r focus:outline-none"
+          className="transition duration-500 ease-in-out text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded focus:outline-none"
         >
           Next
         </button>
