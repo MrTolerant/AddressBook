@@ -5,14 +5,17 @@ const ERROR_HAPPENED = 'AddressBook/ERROR_HAPPENED'
 const REQUEST_STARTED = 'AddressBook/REQUEST_STARTED'
 const REQUEST_DONE = 'AddressBook/REQUEST_DONE'
 
-const initialState = {}
+const initialState = { data: { results: [] } }
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case GET_USERS: {
       return {
         ...state,
-        data: action.data
+        data: {
+          ...state.data,
+          results: ...(new Set([...state.data.results, ...action.data.results]))
+        }
       }
     }
     case REQUEST_STARTED:
@@ -56,7 +59,7 @@ export function getUsers({ page, results }) {
         dispatch({ type: REQUEST_DONE })
       })
       .catch((error) => {
-        console.error('ORG catch error', error)
+        console.error('GetUsers catch error', error)
         dispatch({
           type: ERROR_HAPPENED,
           data: error

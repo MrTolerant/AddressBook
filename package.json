@@ -144,7 +144,6 @@
     "node-hot-loader": "^1.17.8",
     "nodemon": "^2.0.2",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
-    "purgecss-webpack-plugin": "^1.6.0",
     "react-addons-test-utils": "^15.6.2",
     "regenerator-runtime": "^0.13.3",
     "rimraf": "3.0.2",
