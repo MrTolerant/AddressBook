@@ -4,7 +4,7 @@
 
 1. Clone this repo using:
   ```shell
-  $ git clone git@github.com:ovasylenko/lpv-react-redux-boilerplate.git
+  $ git clone git@github.com:MrTolerant/AddressBook.git
   ```
 
 2. To install dependencies and clean the git repo run:
@@ -140,10 +140,12 @@ Will analyse only  `server/**/**.js` files
 Nginx web server working on 443, 80 ports on localhost
 
 ```run production
-docker-compose -f .\docker\PROD.docker-compose.yml up (Options: --build for build, -d to detach )
-docker-compose -f .\docker\PROD.docker-compose.yml down (To stop contaiters)
+docker network create review
+docker-compose -f ./docker/PROD.docker-compose.yml up (Options: --build for build, -d to detach )
+docker-compose -f ./docker/PROD.docker-compose.yml down (To stop contaiters)
 ```
 ```run develop
-docker-compose -f .\docker\DEV.docker-compose.yml up (Options: --build for build, -d to detach )
-docker-compose -f .\docker\DEV.docker-compose.yml down (To stop contaiters)
+docker network create review
+docker-compose -f ./docker/DEV.docker-compose.yml up (Options: --build for build, -d to detach )
+docker-compose -f ./docker/DEV.docker-compose.yml down (To stop contaiters)
 ```
