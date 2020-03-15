@@ -11,7 +11,7 @@ const UserView = ({ currentUser, user, onClick }) => {
       onKeyDown={onClick}
       tabIndex={0}
       className={`z-0 fucus:outline-none outline-none container mx-auto px-4 sm:px-2 flex flex-col transition-all duration-500 ease-in-out transform ${
-        currentUser === user ? '' : '-translate-y-10 h-0 opacity-0'
+        currentUser === user ? '' : 'translate-y-32 h-0 opacity-0'
       }`}
     >
       <div className="mt-2 flex justify-center px-1 py-1 overflow-x-auto min-w-full">
