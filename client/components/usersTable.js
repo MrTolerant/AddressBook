@@ -16,7 +16,7 @@ const UsersTable = ({ page, setPage, setResults, Data = { results: [] } }) => {
 
   useEffect(() => {
     setUsersData(Data)
-    console.log(JSON.stringify(Data, null, 2))
+    // console.log(JSON.stringify(Data, null, 2))
   }, [Data])
 
   const useFilter = (item) => {
@@ -28,37 +28,35 @@ const UsersTable = ({ page, setPage, setResults, Data = { results: [] } }) => {
     )
   }
   return (
-    <div className="container">
-      <div className="py-8">
-        <UsersTableResultsSearch setPage={setPage} setResults={setResults} setFilter={setFilter} />
-        <div className="flex justify-center -mx-4 sm:-mx-8 pl-auto sm:px-8 py-4 overflow-x-auto">
-          <div className="inline-block min-w-64 shadow-lg rounded-lg overflow-hidden">
-            <table className="min-w-64 leading-normal">
-              <thead>
-                <tr>
-                  {tableHeaders.map((h) => (
-                    <th
-                      key={`${h}`}
-                      className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
-                    >
-                      {h}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {usersData.results.filter(useFilter).map((user) => (
-                  <UsersTableRow
-                    key={`${user.phone}${user.name.first}`}
-                    user={user}
-                    setCurrentUser={setCurrentUser}
-                    currentUser={currentUser}
-                  />
+    <div className="container w-screen ">
+      <UsersTableResultsSearch setPage={setPage} setResults={setResults} setFilter={setFilter} />
+      <div className="flex w-screen justify-center ">
+        <div className="inline-block min-w-56 shadow-lg rounded-lg overflow-hidden">
+          <table className="min-w-56 leading-normal">
+            <thead>
+              <tr>
+                {tableHeaders.map((h) => (
+                  <th
+                    key={`${h}`}
+                    className="text-center px-2 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
+                  >
+                    {h}
+                  </th>
                 ))}
-              </tbody>
-            </table>
-            <UsersTablePages setPage={setPage} page={page} />
-          </div>
+              </tr>
+            </thead>
+            <tbody>
+              {usersData.results.filter(useFilter).map((user) => (
+                <UsersTableRow
+                  key={`${user.phone}${user.name.first}`}
+                  user={user}
+                  setCurrentUser={setCurrentUser}
+                  currentUser={currentUser}
+                />
+              ))}
+            </tbody>
+          </table>
+          <UsersTablePages setPage={setPage} page={page} />
         </div>
       </div>
     </div>

@@ -7,7 +7,7 @@ const MAX_PAGES = 100
 
 const UsersTableResultsSearch = ({ setPage, page }) => {
   return (
-    <div className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
+    <div className="px-2 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
       <span className="text-xs xs:text-sm text-gray-900">
         Page {page} of {MAX_PAGES}{' '}
       </span>

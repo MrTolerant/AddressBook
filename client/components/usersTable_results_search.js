@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux'
 
 const UsersTableResultsSearch = ({ setFilter }) => {
   return (
-    <div className="my-2 flex w-auto sm:flex-row flex-col">
+    <div className="my-2 flex w-screen sm:flex-row flex-col">
       {/* <div className="flex  mx-auto flex-row mb-1 sm:mb-0">
         <div className="relative">
           <select
