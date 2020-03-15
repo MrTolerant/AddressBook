@@ -3,10 +3,10 @@ import React, { memo } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-const UsersTableResultsSearch = ({ setResults, setFilter }) => {
+const UsersTableResultsSearch = ({ setFilter }) => {
   return (
-    <div className="my-2 flex sm:flex-row flex-col">
-      <div className="flex  ml-auto flex-row mb-1 sm:mb-0">
+    <div className="my-2 flex w-auto sm:flex-row flex-col">
+      {/* <div className="flex  mx-auto flex-row mb-1 sm:mb-0">
         <div className="relative">
           <select
             onChange={(e) => setResults(e.target.value)}
@@ -27,8 +27,8 @@ const UsersTableResultsSearch = ({ setResults, setFilter }) => {
             </svg>
           </div>
         </div>
-      </div>
-      <div className="block relative">
+      </div> */}
+      <div className="flex mx-auto w-64 block relative">
         <span className="h-full absolute inset-y-0 left-0 flex items-center pl-2">
           <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current text-gray-500">
             <path d="M10 4a6 6 0 100 12 6 6 0 000-12zm-8 6a8 8 0 1114.32 4.906l5.387 5.387a1 1 0 01-1.414 1.414l-5.387-5.387A8 8 0 012 10z" />

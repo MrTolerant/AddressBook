@@ -12,13 +12,13 @@ const UsersTableResultsSearch = ({ setPage, page }) => {
         Page {page} of {MAX_PAGES}{' '}
       </span>
       <div className="inline-flex mt-2 xs:mt-0">
-        <button
+        {/* <button
           type="button"
           onClick={() => setPage(Math.max(page - 1, 1))}
           className="transition duration-500 ease-in-out text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-l focus:outline-none"
         >
           Prev
-        </button>
+        </button> */}
         <button
           type="button"
           onClick={() => setPage(Math.min(page + 1, MAX_PAGES))}

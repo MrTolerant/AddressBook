@@ -1,25 +1,48 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-console */
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import UsersTable from './usersTable'
-import UserView from './userView'
+import { getUsers } from '../redux/reducers/users'
 
-const Index = () => {
-  const [currentUser, setCurrentUser] = useState(false)
+const Index = ({ getUsers: getUsersRedux, Data }) => {
+  const [page, setPage] = useState(1)
+  const [results, setResults] = useState(50)
+
+  const handleScroll = () => {
+    if (
+      !(
+        window.innerHeight + document.documentElement.scrollTop !==
+        document.documentElement.offsetHeight
+      )
+    ) {
+      setPage(page + 1)
+      console.log('Fetch more list items! page:', page)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [page])
+
+  useEffect(() => {
+    getUsersRedux({ page, results })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [getUsersRedux, page, setPage])
 
   return (
-    <div className="flex-row grid grid-cols-2 gap-4  min-h-screen min-w-screen bg-gray-200">
+    <div className="flex-row mx-auto min-h-screen min-w-screen bg-gray-200">
       <div className="flex-flex-col">
-        <UsersTable setCurrentUser={setCurrentUser} currentUser={currentUser} />
-      </div>
-      <div
-        className={`flex-flex-col transition-all duration-500 ease-in-out transform ${
-          currentUser ? '' : 'opacity-0 -translate-x-48 '
-        }`}
-      >
-        <UserView currentUser={currentUser} />
+        <UsersTable
+          page={page}
+          setPage={setPage}
+          results={results}
+          setResults={setResults}
+          Data={Data}
+        />
       </div>
     </div>
   )
@@ -27,8 +50,8 @@ const Index = () => {
 
 Index.propTypes = {}
 
-const mapStateToProps = () => ({})
+const mapStateToProps = (store) => ({ Data: store.users.data })
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({}, dispatch)
+const mapDispatchToProps = (dispatch) => bindActionCreators({ getUsers }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Index)

@@ -5,27 +5,14 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import UsersTableResultsSearch from './usersTable_results_search'
 import UsersTablePages from './usersTable_pages'
-
 import UsersTableRow from './usersTable_row'
-
-import { getUsers } from '../redux/reducers/users'
 
 const tableHeaders = ['Photo', 'First Name', 'Last Name', 'Phone']
 
-const UsersTable = ({
-  currentUser,
-  setCurrentUser,
-  getUsers: getUsersRedux,
-  Data = { results: [] }
-}) => {
-  const [page, setPage] = useState(1)
-  const [results, setResults] = useState(5)
+const UsersTable = ({ page, setPage, setResults, Data = { results: [] } }) => {
   const [filter, setFilter] = useState('')
   const [usersData, setUsersData] = useState(Data)
-
-  useEffect(() => {
-    getUsersRedux({ page, results })
-  }, [getUsersRedux, page, results])
+  const [currentUser, setCurrentUser] = useState(false)
 
   useEffect(() => {
     setUsersData(Data)
@@ -44,7 +31,7 @@ const UsersTable = ({
     <div className="container">
       <div className="py-8">
         <UsersTableResultsSearch setPage={setPage} setResults={setResults} setFilter={setFilter} />
-        <div className="flex justify-end -mx-4 sm:-mx-8 pl-auto sm:px-8 py-4 overflow-x-auto">
+        <div className="flex justify-center -mx-4 sm:-mx-8 pl-auto sm:px-8 py-4 overflow-x-auto">
           <div className="inline-block min-w-64 shadow-lg rounded-lg overflow-hidden">
             <table className="min-w-64 leading-normal">
               <thead>
@@ -62,7 +49,7 @@ const UsersTable = ({
               <tbody>
                 {usersData.results.filter(useFilter).map((user) => (
                   <UsersTableRow
-                    key={`${user.phone}`}
+                    key={`${user.phone}${user.name.first}`}
                     user={user}
                     setCurrentUser={setCurrentUser}
                     currentUser={currentUser}
@@ -80,10 +67,8 @@ const UsersTable = ({
 
 UsersTable.propTypes = {}
 
-const mapStateToProps = (store) => ({
-  Data: store.users.data
-})
+const mapStateToProps = () => ({})
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({ getUsers }, dispatch)
+const mapDispatchToProps = (dispatch) => bindActionCreators({}, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(memo(UsersTable))

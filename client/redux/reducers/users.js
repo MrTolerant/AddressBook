@@ -14,7 +14,7 @@ export default (state = initialState, action) => {
         ...state,
         data: {
           ...state.data,
-          results: ...(new Set([...state.data.results, ...action.data.results]))
+          results: [...state.data.results, ...action.data.results]
         }
       }
     }
