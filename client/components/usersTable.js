@@ -9,7 +9,7 @@ import UsersTableRow from './usersTable_row'
 
 const tableHeaders = ['Photo', 'First Name', 'Last Name', 'Phone']
 
-const UsersTable = ({ page, setPage, setResults, Data = { results: [] } }) => {
+const UsersTable = ({ setPage, setResults, Data = { results: [] }, MAX_USERS }) => {
   const [filter, setFilter] = useState('')
   const [usersData, setUsersData] = useState(Data)
   const [currentUser, setCurrentUser] = useState(false)
@@ -56,7 +56,7 @@ const UsersTable = ({ page, setPage, setResults, Data = { results: [] } }) => {
               ))}
             </tbody>
           </table>
-          <UsersTablePages setPage={setPage} page={page} />
+          <UsersTablePages usersCount={usersData.results.length} MAX_USERS={MAX_USERS} />
         </div>
       </div>
     </div>

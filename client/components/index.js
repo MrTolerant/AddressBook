@@ -10,39 +10,36 @@ import { getUsers } from '../redux/reducers/users'
 const Index = ({ getUsers: getUsersRedux, Data }) => {
   const [results, setResults] = useState(50)
   const [page, setPage] = useState(1)
+  const MAX_USERS = 1000
+  let allowHandleScroll = true
 
   const handleScroll = () => {
-    let allowHandleScroll = true
     if (allowHandleScroll) {
       if (
         window.innerHeight + document.documentElement.scrollTop >
-        document.documentElement.offsetHeight - 5
+        document.documentElement.offsetHeight - 2
       ) {
-        console.log(
-          'innerHeight',
-          window.innerHeight,
-          'scrollTop',
-          document.documentElement.scrollTop,
-          'offsetHeight',
-          document.documentElement.offsetHeight
-        )
         allowHandleScroll = false
         setPage(page + 1)
         setTimeout(() => {
           allowHandleScroll = true
-        }, 500)
-        console.log('Fetch more list items! page:', page)
+        }, 200)
       }
     }
   }
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
+    if (Data.results.length + results <= MAX_USERS) {
+      window.addEventListener('scroll', handleScroll)
+    }
     return () => window.removeEventListener('scroll', handleScroll)
   }, [page])
 
   useEffect(() => {
-    getUsersRedux({ page, results })
+    if (Data.results.length + results <= MAX_USERS) {
+      getUsersRedux({ page, results })
+      console.log('page', page)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [getUsersRedux, page, setPage])
 
@@ -55,6 +52,7 @@ const Index = ({ getUsers: getUsersRedux, Data }) => {
           results={results}
           setResults={setResults}
           Data={Data}
+          MAX_USERS={MAX_USERS}
         />
       </div>
     </div>
