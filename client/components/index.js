@@ -8,25 +8,31 @@ import UsersTable from './usersTable'
 import { getUsers } from '../redux/reducers/users'
 
 const Index = ({ getUsers: getUsersRedux, Data }) => {
-  const [page, setPage] = useState(1)
   const [results, setResults] = useState(50)
+  const [page, setPage] = useState(1)
 
   const handleScroll = () => {
-    console.log(
-      'innerHeight',
-      window.innerHeight,
-      'scrollTop',
-      document.documentElement.scrollTop,
-      'offsetHeight',
-      document.documentElement.offsetHeight
-    )
-
-    if (
-      window.innerHeight + document.documentElement.scrollTop >
-      document.documentElement.offsetHeight - 20
-    ) {
-      setPage(page + 1)
-      console.log('Fetch more list items! page:', page)
+    let allowHandleScroll = true
+    if (allowHandleScroll) {
+      if (
+        window.innerHeight + document.documentElement.scrollTop >
+        document.documentElement.offsetHeight - 5
+      ) {
+        console.log(
+          'innerHeight',
+          window.innerHeight,
+          'scrollTop',
+          document.documentElement.scrollTop,
+          'offsetHeight',
+          document.documentElement.offsetHeight
+        )
+        allowHandleScroll = false
+        setPage(page + 1)
+        setTimeout(() => {
+          allowHandleScroll = true
+        }, 500)
+        console.log('Fetch more list items! page:', page)
+      }
     }
   }
 
