@@ -12,11 +12,18 @@ const Index = ({ getUsers: getUsersRedux, Data }) => {
   const [results, setResults] = useState(50)
 
   const handleScroll = () => {
+    console.log(
+      'innerHeight',
+      window.innerHeight,
+      'scrollTop',
+      document.documentElement.scrollTop,
+      'offsetHeight',
+      document.documentElement.offsetHeight
+    )
+
     if (
-      !(
-        window.innerHeight + document.documentElement.scrollTop !==
-        document.documentElement.offsetHeight
-      )
+      window.innerHeight + document.documentElement.scrollTop >
+      document.documentElement.offsetHeight - 20
     ) {
       setPage(page + 1)
       console.log('Fetch more list items! page:', page)

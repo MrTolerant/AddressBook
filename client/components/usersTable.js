@@ -32,7 +32,7 @@ const UsersTable = ({ page, setPage, setResults, Data = { results: [] } }) => {
       <UsersTableResultsSearch setPage={setPage} setResults={setResults} setFilter={setFilter} />
       <div className="flex w-screen justify-center ">
         <div className="inline-block min-w-56 shadow-lg rounded-lg overflow-hidden">
-          <table className="min-w-56 leading-normal">
+          <table className="min-w-56 leading-none">
             <thead>
               <tr>
                 {tableHeaders.map((h) => (

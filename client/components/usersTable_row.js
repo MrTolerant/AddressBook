@@ -8,7 +8,7 @@ const UsersTableRow = ({ user, setCurrentUser, currentUser }) => {
   return (
     <>
       <tr
-        className={`z-50 pl-4 cursor-pointer transition duration-500 ease-in-out bg-white transform hover:-translate-y-1 hover:scale-110 ${
+        className={`m-2 rounded-full z-50 pl-4 cursor-pointer transition duration-500 ease-in-out bg-white transform hover:-translate-y-1 hover:scale-110 ${
           user === currentUser ? 'bg-blue-200 hover:bg-red-200 ' : 'hover:bg-blue-200 '
         }`}
         onClick={() => setCurrentUser(user === currentUser ? false : user)}
@@ -30,16 +30,11 @@ const UsersTableRow = ({ user, setCurrentUser, currentUser }) => {
         <td className="px-2 py-1 border-b border-gray-200 text-sm">
           <p className="text-gray-900 whitespace-no-wrap select-none">{user.name.last}</p>
         </td>
-        {/* <td className="px-2 py-1 border-b border-gray-200 text-sm">
-        <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-          <span aria-hidden className="absolute inset-0 bg-green-200 opacity-50 rounded-full" />
-          <span className="relative">{user.email}</span>
-        </span>
-      </td> */}
         <td className="px-2 py-1 border-b border-gray-200 text-sm">
           <p className="text-gray-900 whitespace-no-wrap select-none">{user.phone}</p>
         </td>
       </tr>
+
       <tr>
         <td colSpan="4">
           <UserView
@@ -49,12 +44,6 @@ const UsersTableRow = ({ user, setCurrentUser, currentUser }) => {
           />
         </td>
       </tr>
-
-      {/* <div
-        className={`flex-flex-col transition-all duration-500 ease-in-out transform ${
-          currentUser ? '' : 'scale-0 opacity-0  '
-        }`}
-      ></div> */}
     </>
   )
 }
