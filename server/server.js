@@ -28,6 +28,16 @@ echo.on('connection', (conn) => {
   })
 })
 
+server.use('/api/currency', async (req, res) => {
+  try {
+    const { currency } = req.body
+    res.status(200)
+    res.end()
+  } catch {
+    res.status(500).json({ message: 'Something goes wrong' })
+  }
+})
+
 server.use('/api/', (_, res) => {
   res.status(404)
   res.end()
@@ -57,6 +67,22 @@ server.get('/*', (req, res) => {
 })
 
 const app = server.listen(port)
+
+const mongoose = require('mongoose')
+
+mongoose.Promise = global.Promise
+
+mongoose
+  .connect(process.env.dbURL || 'mongodb://localhost:27017/meter', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true
+  })
+  .then(() => console.log('Connected to database.'))
+  .catch(() => {
+    console.log('Cannot connect to database. Exiting.')
+    process.exit()
+  })
 
 echo.installHandlers(app, { prefix: '/ws' })
 

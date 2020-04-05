@@ -12,3 +12,11 @@ mongoose
     console.log('Cannot connect to database. Exiting.')
     process.exit()
   })
+
+const { Schema } = mongoose
+const currencySchema = new Schema({
+  name: String,
+  coastInRubbles: Number
+})
+
+const currency = mongoose.model('currency', currencySchema)
