@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
 
-const GET_USERS = 'AddressBook/GET_USERS'
-const ERROR_HAPPENED = 'AddressBook/ERROR_HAPPENED'
-const REQUEST_STARTED = 'AddressBook/REQUEST_STARTED'
-const REQUEST_DONE = 'AddressBook/REQUEST_DONE'
+const GET_USERS = 'METER/GET_USERS'
+const ERROR_HAPPENED = 'METER/ERROR_HAPPENED'
+const REQUEST_STARTED = 'METER/REQUEST_STARTED'
+const REQUEST_DONE = 'METER/REQUEST_DONE'
 
 const initialState = { data: { results: [] } }
 

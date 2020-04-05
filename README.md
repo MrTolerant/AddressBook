@@ -1,10 +1,10 @@
-# AddressBook
+# METER
 
 ## Quick start
 
 1. Clone this repo using:
   ```shell
-  $ git clone git@github.com:MrTolerant/AddressBook.git
+  $ git clone git@github.com:MrTolerant/METER.git
   ```
 
 2. To install dependencies and clean the git repo run:
