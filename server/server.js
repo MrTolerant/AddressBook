@@ -9,6 +9,8 @@ import Html from '../dist/html'
 
 let connections = []
 
+const Currency = require('./models/currency')
+
 const port = process.env.PORT || 3000
 const server = express()
 
@@ -30,7 +32,8 @@ echo.on('connection', (conn) => {
 
 server.use('/api/currency', async (req, res) => {
   try {
-    const { currency } = req.body
+    const { name } = req.body
+
     res.status(200)
     res.end()
   } catch {
