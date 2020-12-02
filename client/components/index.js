@@ -14,7 +14,6 @@ const Index = ({ getUsers: getUsersRedux, Data, isRequesting }) => {
   const PIXELS_BEFORE_FETCH_NEXT_ITEMS = 10
   let allowHandleScroll = true
   let allowListener = true
-
   const handleScroll = () => {
     if (allowListener) {
       allowListener = false
