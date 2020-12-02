@@ -11,27 +11,30 @@ const Index = ({ getUsers: getUsersRedux, Data, isRequesting }) => {
   const [results, setResults] = useState(50)
   const [page, setPage] = useState(1)
   const MAX_USERS = 1000
-  const PIXELS_BEFORE_FETCH_NEXT_ITEMS = 1
+  const PIXELS_BEFORE_FETCH_NEXT_ITEMS = 10
   let allowHandleScroll = true
-  const handleScroll = () => {
-    console.log(
-      '1 cond=',
-      window.innerHeight + document.documentElement.scrollTop,
-      '2 cond =',
-      document.documentElement.offsetHeight - PIXELS_BEFORE_FETCH_NEXT_ITEMS
-    )
+  let allowListener = true
 
-    if (
-      document.documentElement.offsetHeight - PIXELS_BEFORE_FETCH_NEXT_ITEMS <=
-      window.innerHeight + document.documentElement.scrollTop
-    ) {
-      if (allowHandleScroll) {
-        allowHandleScroll = false
-        setPage(page + 1)
-        setTimeout(() => {
-          allowHandleScroll = true
-        }, 5000)
-      }
+  const handleScroll = () => {
+    if (allowListener) {
+      allowListener = false
+      console.log('Scroll...')
+      setTimeout(() => {
+        allowListener = true
+        if (
+          document.documentElement.offsetHeight - PIXELS_BEFORE_FETCH_NEXT_ITEMS <=
+          window.innerHeight + document.documentElement.scrollTop
+        ) {
+          if (allowHandleScroll) {
+            allowHandleScroll = false
+            console.log('Next page')
+            setPage(page + 1)
+            setTimeout(() => {
+              allowHandleScroll = true
+            }, 2000)
+          }
+        }
+      }, 500)
     }
   }
 
