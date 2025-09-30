@@ -89,7 +89,7 @@
     "hard-source-webpack-plugin": "^0.13.1",
     "history": "^4.10.1",
     "isomorphic-fetch": "^2.2.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "next": "^9.1.5",
     "node-fetch": "^2.6.7",
     "node-sass": "^7.0.0",
